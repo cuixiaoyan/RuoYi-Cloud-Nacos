@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.cxy.mapper.CxySysStudentMapper">
+    
+    <resultMap type="CxySysStudent" id="CxySysStudentResult">
+        <result property="studentId"    column="student_id"    />
+        <result property="studentName"    column="student_name"    />
+        <result property="studentAge"    column="student_age"    />
+        <result property="studentSex"    column="student_sex"    />
+        <result property="studentStatus"    column="student_status"    />
+        <result property="studentBirthday"    column="student_birthday"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectCxySysStudentVo">
+        select student_id, student_name, student_age, student_sex, student_status, student_birthday, remark from cxy_sys_student
+    </sql>
+
+    <select id="selectCxySysStudentList" parameterType="CxySysStudent" resultMap="CxySysStudentResult">
+        <include refid="selectCxySysStudentVo"/>
+        <where>  
+            <if test="studentName != null  and studentName != ''"> and student_name like concat('%', #{studentName}, '%')</if>
+            <if test="studentAge != null "> and student_age = #{studentAge}</if>
+            <if test="studentSex != null  and studentSex != ''"> and student_sex = #{studentSex}</if>
+            <if test="studentStatus != null  and studentStatus != ''"> and student_status = #{studentStatus}</if>
+            <if test="studentBirthday != null "> and student_birthday = #{studentBirthday}</if>
+        </where>
+    </select>
+    
+    <select id="selectCxySysStudentById" parameterType="Long" resultMap="CxySysStudentResult">
+        <include refid="selectCxySysStudentVo"/>
+        where student_id = #{studentId}
+    </select>
+        
+    <insert id="insertCxySysStudent" parameterType="CxySysStudent" useGeneratedKeys="true" keyProperty="studentId">
+        insert into cxy_sys_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentName != null">student_name,</if>
+            <if test="studentAge != null">student_age,</if>
+            <if test="studentSex != null">student_sex,</if>
+            <if test="studentStatus != null">student_status,</if>
+            <if test="studentBirthday != null">student_birthday,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="studentName != null">#{studentName},</if>
+            <if test="studentAge != null">#{studentAge},</if>
+            <if test="studentSex != null">#{studentSex},</if>
+            <if test="studentStatus != null">#{studentStatus},</if>
+            <if test="studentBirthday != null">#{studentBirthday},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCxySysStudent" parameterType="CxySysStudent">
+        update cxy_sys_student
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="studentName != null">student_name = #{studentName},</if>
+            <if test="studentAge != null">student_age = #{studentAge},</if>
+            <if test="studentSex != null">student_sex = #{studentSex},</if>
+            <if test="studentStatus != null">student_status = #{studentStatus},</if>
+            <if test="studentBirthday != null">student_birthday = #{studentBirthday},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where student_id = #{studentId}
+    </update>
+
+    <delete id="deleteCxySysStudentById" parameterType="Long">
+        delete from cxy_sys_student where student_id = #{studentId}
+    </delete>
+
+    <delete id="deleteCxySysStudentByIds" parameterType="String">
+        delete from cxy_sys_student where student_id in 
+        <foreach item="studentId" collection="array" open="(" separator="," close=")">
+            #{studentId}
+        </foreach>
+    </delete>
+    
+</mapper>

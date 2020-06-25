@@ -100,3 +100,211 @@ java -Dserver.port=8718 -Dcsp.sentinel.dashboard.server=localhost:8718 -Dproject
 
 
 
+## 创建数据表
+
+```mysql
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sys_student
+-- ----------------------------
+DROP TABLE IF EXISTS `cxy_sys_student`;
+CREATE TABLE `cxy_sys_student` (
+  `student_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `student_name` varchar(30) DEFAULT '' COMMENT '学生名称',
+  `student_age` int(3) DEFAULT NULL COMMENT '年龄',
+  `student_sex` char(1) DEFAULT '0' COMMENT '性别（0男 1女 2未知）',
+  `student_status` char(1) DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  `student_birthday` datetime DEFAULT NULL COMMENT '生日',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='学生信息表';
+
+-- ----------------------------
+-- Records of sys_student
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_student` VALUES (1, '12321', 123, '0', '1', '2020-05-18 00:00:00', NULL);
+INSERT INTO `sys_student` VALUES (2, '12', 12, '1', '1', '2020-06-23 00:00:00', NULL);
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+```
+
+## 代码生成
+
+![image-20200624153654308](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200624153654308.png)
+
+![image-20200624153822766](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200624153822766.png)
+
+![image-20200625113623424](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625113623424.png)
+
+## 增加目录
+
+![image-20200625113728489](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625113728489.png)
+
+
+
+## 新的模块创建
+
+#### 父目录
+
+![image-20200625114018045](/Users/cuixiaoyan/Library/Application%20Support/typora-user-images/image-20200625114018045.png)
+
+#### 子目录
+
+![image-20200625114104538](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114104538.png)
+
+## 引入依赖
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ruoyi-cxy</artifactId>
+        <groupId>com.ruoyi</groupId>
+        <version>2.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>school-business</artifactId>
+
+    <description>
+        school-business业务逻辑代码
+    </description>
+
+    <dependencies>
+
+        <!-- SpringCloud Ailibaba Nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!-- SpringCloud Ailibaba Nacos Config -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- SpringCloud Ailibaba Sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <!-- SpringBoot Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.fox.version}</version>
+        </dependency>
+
+        <!-- Quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.mchange</groupId>
+                    <artifactId>c3p0</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Mysql Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- Ruoyi Common Security-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-common-security</artifactId>
+        </dependency>
+
+        <!-- Ruoyi Common Log -->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-common-log</artifactId>
+        </dependency>
+
+
+        <!-- Ruoyi Common Swagger -->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-common-swagger</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
+
+都是直接将文件复制粘贴进去即可。
+
+**后台文件放置**
+
+![image-20200625114402063](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114402063.png)
+
+**前台文件放置**
+
+![image-20200625114503714](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114503714.png)
+
+# 常见问题
+
+1. 创建配置文件，端口，和服务名。
+
+![image-20200625114629369](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114629369.png)
+
+2. nacos中创建，仿照代码生成模块的配置文件。
+
+![image-20200625114756426](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114756426.png)
+
+![image-20200625114844042](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114844042.png)
+
+3. 设置网关
+
+![image-20200625114942609](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114942609.png)
+
+![image-20200625115033671](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625115033671.png)
+
+4. 增加服务列表
+
+![image-20200625115214924](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625115214924.png)
+
+![image-20200625115154227](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625115154227.png)
+
+
+
+# 最后效果
+
+![image-20200625115634976](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625115634976.png)
+
