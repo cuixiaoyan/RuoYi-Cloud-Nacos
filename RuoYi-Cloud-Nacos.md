@@ -151,7 +151,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 #### 父目录
 
-![image-20200625114018045](/Users/cuixiaoyan/Library/Application%20Support/typora-user-images/image-20200625114018045.png)
+![image-20200629175053107](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200629175053107.png)
 
 #### 子目录
 
