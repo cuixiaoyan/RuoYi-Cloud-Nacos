@@ -288,7 +288,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ![image-20200625114756426](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114756426.png)
 
-![image-20200625114844042](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625114844042.png)
+![image-20200703100647711](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703100647711.png)
 
 3. 设置网关
 
@@ -302,9 +302,18 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ![image-20200625115154227](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625115154227.png)
 
+# 增加启动类
 
+
+
+![image-20200703100912208](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703100912208.png)
 
 # 最后效果
 
 ![image-20200625115634976](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200625115634976.png)
 
+![image-20200703101047914](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703101047914.png)
+
+![image-20200703101118736](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703101118736.png)
+
+![image-20200703101229508](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703101229508.png)
