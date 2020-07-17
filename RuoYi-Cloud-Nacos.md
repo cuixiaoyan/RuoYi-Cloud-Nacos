@@ -317,3 +317,14 @@ SET FOREIGN_KEY_CHECKS = 1;
 ![image-20200703101118736](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703101118736.png)
 
 ![image-20200703101229508](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200703101229508.png)
+
+## swagger文档操作
+
+![image-20200717172344988](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200717172344988.png)
+
+登陆成功之后，就可以操作了。
+
+![image-20200717172417701](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200717172417701.png)
+
+![image-20200717172750450](https://gitee.com/cuixiaoyan/uPic/raw/master/uPic/image-20200717172750450.png)
+
